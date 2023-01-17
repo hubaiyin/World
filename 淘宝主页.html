@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                font: 12px/1.5 tahoma, arial, 'Hiragino Sans GB', '\5b8b\4f53', sans-serif;
+            }
+
+            li {
+                list-style: none;
+            }
+
+            a {
+                text-decoration: none;
+            }
+
+            /* 顶部导航栏 */
+            .top a:hover,
+            .top a:hover>span {
+                color: #ff5000 !important;
+            }
+
+            .top {
+                height: 35px;
+                background-color: #f5f5f5;
+            }
+
+            .topbody {
+                width: 1190px;
+                height: 100%;
+                margin: 0 auto;
+                position: relative;
+            }
+
+            .topleft,
+            .topright {
+                position: absolute;
+                height: 100%;
+            }
+
+            .topleft {
+                left: 0;
+                display: flex;
+            }
+
+            .topleft>li {
+                flex-direction: row;
+            }
+
+            .topbody li>div {
+                padding: 0 6px;
+            }
+
+            .topbody li span {
+                margin-right: 7px;
+                line-height: 35px;
+                font-size: 12px;
+                color: #6c6c6c;
+            }
+
+            .topright {
+                right: 0;
+                display: flex;
+            }
+
+            .topright>li {
+                flex-direction: row;
+            }
+
+            /* 隐藏式下拉框 */
+            .dropdown {
+                position: relative;
+                display: inline-block;
+            }
+
+            .dropdown:hover {
+                background-color: #fff;
+            }
+
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                /* min-width: 82px; */
+                background-color: #fff;
+                margin-left: -6px;
+                padding: 8px 0;
+                z-index: 10;
+            }
+
+            .dropdown-content a {
+                height: 28px;
+                display: block;
+                white-space: nowrap;
+                font-size: 12px;
+                line-height: 28px;
+                padding: 0 6px;
+                color: #6c6c6c;
+            }
+
+            .dropdown-content a:hover {
+                background-color: #f5f5f5;
+            }
+
+            .dropdown:hover .dropdown-content {
+                display: block;
+            }
+
+            /* 搜索栏 */
+            .search {
+                display: flex;
+                width: 1190px;
+                margin: 16px auto;
+            }
+
+            .search>img,
+            .search>div {
+                flex-direction: row;
+            }
+
+            .search>img {
+                width: 88px;
+                height: 58px;
+                margin: auto 0;
+                margin-right: 84px;
+                margin-left: 75px;
+            }
+
+            .form {
+                width: 734px;
+                height: 38px;
+                border: 2px #ff5000 solid;
+                border-radius: 19px;
+                display: flex;
+                background-color: #fff;
+            }
+
+            .form>div {
+                flex-direction: row;
+            }
+
+            .woods {
+                height: 20px;
+                width: 46px;
+                margin: auto 0;
+                line-height: 20px;
+                padding-left: 20px;
+                color: #333;
+                margin-right: 22px;
+            }
+
+            .textinput {
+                height: 38px;
+                width: 572px;
+                margin: auto 0;
+                border: none;
+                background: rgba(240, 240, 240, 0);
+                outline: none;
+            }
+
+            .smbtn {
+                width: 72px;
+                height: 34px;
+                background-color: #ff5600;
+                border: 2px #ff5600 solid;
+                border-radius: 17px;
+                color: #fff5ed;
+                font-size: 18px;
+                font-weight: 700px;
+            }
+
+            /* 常用搜索关键词 */
+            .usual {
+                padding-left: 8px;
+                margin-top: 5px;
+            }
+
+            .usual>a {
+
+                margin-left: 12px;
+                color: #666666;
+                font-size: 12px;
+            }
+
+            /* 淘宝下载的二维码 */
+            .QR {
+                width: 74px;
+                height: 88px;
+                background-color: #fff;
+                margin-left: 64px;
+            }
+
+            .QR>div {
+                width: 48px;
+                height: 14px;
+                font-size: 12px;
+                line-height: 14px;
+                color: #ff5000;
+                margin: 6px auto;
+                margin-bottom: 2px;
+            }
+
+            .QR>img {
+                width: 64px;
+                margin-left: 5px;
+            }
+
+            /* 中部展示页 */
+            .medium {
+                background-color: #fff;
+                width: 1190px;
+                border: 2px solid #fff;
+                border-radius: 20px 20px 0 0;
+                margin: 0 auto;
+            }
+
+            /* 分类栏与登录 */
+            .half-top {
+                display: flex;
+                flex: row;
+                margin-bottom: 52px;
+            }
+
+            /* 分类栏 */
+            .classification {
+                background-color: #f7f9fa;
+                height: 368px;
+                width: 270px;
+                margin-top: 24px;
+                margin-left: 24px;
+                border: 0px solid #fff;
+                border-radius: 20px;
+            }
+
+            .classification h2 {
+                padding: 16px 0 0 20px;
+                font-size: 18px;
+                color: #111;
+                letter-spacing: 0;
+                line-height: 24px;
+            }
+
+            .classification ul {
+                padding: 16px 0 8px 20px;
+                border-top: none;
+            }
+
+            .classification ul li {
+                overflow: hidden;
+                line-height: 20px;
+                height: 20px;
+                position: relative;
+                font-size: 14px;
+                font-weight: 400;
+                margin-bottom: 18px;
+                width: 212px;
+                color: #666;
+            }
+
+            .classification ul li span {
+                height: 20px;
+                overflow: hidden;
+                width: 7px;
+                padding: 0 8px;
+            }
+
+            .classification a {
+                display: inline-block;
+                color: #6c6c6c;
+            }
+
+            .right {
+                margin-left: 14px;
+            }
+
+            /* 快速跳转导航 */
+            .upper {
+                width: 870px;
+                height: 42px;
+                background-color: #f7f9fa;
+                border: 0px solid #f7f9fa;
+                border-radius: 15px;
+                margin: 24px auto;
+                margin-bottom: 10px;
+            }
+
+            .upper>ul {
+                /* display: flex; */
+                position: relative;
+                top: 10px;
+                left: 10px;
+            }
+
+            .upper>ul>li {
+                float: left;
+                margin-top: 3px;
+            }
+
+            .upper a {
+                color: #333333;
+                font-size: 16px;
+                line-height: 16px;
+                padding: 0 20px;
+            }
+
+            /* 推荐与登录 */
+            .down {
+                position: relative;
+            }
+
+            /* 推荐 */
+            .tb-promo {
+                position: absolute;
+                width: 564px;
+                height: 315px;
+            }
+
+            .tb-promo>img {
+                width: 100%;
+                height: 100%;
+                border: 0px solid;
+                border-radius: 10px;
+            }
+
+            /* 左右键模拟 */
+            .prev,
+            .next {
+                position: absolute;
+                top: 50%;
+                margin-top: -15px;
+                width: 20px;
+                height: 30px;
+                background: rgba(0, 0, 0, 0.3);
+                text-align: center;
+                line-height: 30px;
+                color: #fff;
+                text-decoration: none;
+            }
+
+            .prev {
+                left: 0;
+                border-radius: 0 15px 15px 0;
+            }
+
+            .next {
+                right: 0;
+                border-radius: 15px 0 0 15px;
+            }
+
+            /* 跟随图片翻页的圆点模拟 */
+            .pro-nav {
+                position: absolute;
+                bottom: 15px;
+                left: 50%;
+                margin-left: -35px;
+                width: 70px;
+                height: 13px;
+                background: rgba(255, 255, 255, 0.3);
+                border-radius: 6.5px;
+            }
+
+            .pro-nav>li {
+                float: left;
+                width: 8px;
+                height: 8px;
+                background-color: #fff;
+                border-radius: 50%;
+                margin: 3px;
+            }
+
+            .pro-nav .selected {
+                background-color: #ff5000;
+            }
+
+            /* 登录栏 */
+            .user {
+                position: absolute;
+                right: 0;
+                height: 315px;
+                width: 302px;
+            }
+
+            .head {
+                width: 62px;
+                margin: 0 auto;
+            }
+
+            .head a {
+                display: block;
+                margin-top: 22px;
+                font-size: 16px;
+                font-weight: 800;
+                color: #3c3c3c;
+            }
+
+            .head img {
+                border: 0px solid #ffffff;
+                border-radius: 50%;
+                margin: 0 auto;
+            }
+
+            .log {
+                padding-left: 20px;
+                margin-top: 16px;
+            }
+
+            .log a {
+                display: inline-block;
+                width: 78px;
+                height: 40px;
+                text-align: center;
+                font-size: 16px;
+                line-height: 40px;
+                border-radius: 21px;
+                margin-right: 5px;
+            }
+
+            .login {
+                color: #ffffff;
+                background-color: #ff5200;
+                border: 1px solid #ff5200;
+            }
+
+            .register {
+                color: #ffffff;
+                background-color: #ff7700;
+                border: 1px solid #ff7700;
+            }
+
+            .ops {
+                background-color: #ffffff;
+                color: #ff5000;
+                border: 1px solid #ff915e;
+            }
+
+            .user-mytao {
+                display: flex;
+                flex-direction: row;
+                margin-left: 22px;
+                margin-top: 22px;
+            }
+
+            .mytao-content {
+                height: 48px;
+                width: 48px;
+                margin-right: 22px;
+                position: relative;
+            }
+
+            .mytao-content p {
+                font-size: 12px;
+                color: #3c3c3c;
+                position: absolute;
+                bottom: 0;
+            }
+
+            .mytao-content img {
+                position: absolute;
+                left: 50%;
+                margin-left: -10px;
+            }
+
+            /* 底部内容 */
+            .hot-content {
+                /* 强制不换行 */
+                white-space: nowrap;
+                overflow: hidden;
+                width: 204px;
+                margin-top: 42px;
+                margin-left: 60px;
+            }
+
+            .hot-content p {
+                font-size: 12px;
+            }
+
+            /* 猜你喜欢页面 */
+            .guess {
+                padding: 0 19px;
+                width: 1190px;
+            }
+
+            .guess-header {
+                height: 24px;
+                margin-bottom: 20px;
+                margin-left: 6px;
+                font-size: 24px;
+            }
+
+            .guess-content {
+                display: flex;
+                align-content: flex-start;
+                flex-flow: row wrap;
+            }
+
+            /* 装猜你喜欢商品的盒子（通用） */
+            .box {
+                position: relative;
+                height: 172px;
+                width: 376px;
+                background-color: #f7f9fa;
+                margin-right: 12px;
+                border: 1px solid #f7f9fa;
+                border-radius: 10px;
+                margin-bottom: 18px;
+            }
+
+            .box:hover {
+                border-color: #ff5200;
+            }
+
+            /* 商品图片 */
+            .img-wrapper {
+                width: 150px;
+                height: 150px;
+                position: absolute;
+                left: 0;
+                margin-left: 10px;
+                margin-top: 10px;
+            }
+
+            .img-wrapper img {
+                width: 100%;
+                border: 0px solid #f7f9fa;
+                border-radius: 10px;
+            }
+
+            /* 商品信息 */
+            .wrapper-right {
+                width: 185px;
+                height: 150px;
+                position: absolute;
+                right: 0;
+                margin-right: 16px;
+            }
+
+            .info-wrapper .title {
+                display: inline-block;
+                max-height: 46px;
+                margin: 6px 0 2px 0;
+                overflow: hidden;
+                color: #333;
+                font-size: 16px;
+                line-height: 23px;
+            }
+
+            .info-wrapper .title:hover {
+                color: #ff5200;
+            }
+
+            /* 价格 */
+            .price-wrapper {
+                position: absolute;
+                bottom: 0;
+            }
+
+            .price-wrapper em {
+                margin-right: 4px;
+                font-size: 14px;
+                font-family: "Microsoft Yahei";
+                vertical-align: middle;
+            }
+
+            .price-wrapper span {
+                font-size: 22px;
+                color: #ff5000;
+            }
+
+            /* 侧边栏 */
+            .sidebar {
+                background-color: #fff;
+                height: 296px;
+                width: 60px;
+                position: fixed;
+                bottom: 294px;
+                right: 0;
+                border: 0 solid #fff;
+                border-radius: 20px 0 0 20px;
+                padding: 26px 0;
+            }
+
+            .sidebar>div {
+                height: 46px;
+                width: 60px;
+                margin-bottom: 36px;
+                text-align: center;
+            }
+
+            /* 帮助栏 */
+            .helper {
+                width: 1190px;
+                /* height: 140px; */
+                padding-top: 40px;
+                display: flex;
+                justify-content: space-around;
+
+            }
+
+            .helper-box {
+                width: 247.5px;
+                margin-bottom: 24px;
+            }
+
+            .helper-content {
+                margin-top: 16px;
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            .helper-content li {
+                margin: 0 15px 3px 0;
+                color: #999;
+            }
+        </style>
+    </head>
+
+    <body style="background-color: #eae8eb;">
+        <!-- 顶部导航栏 -->
+        <div class="top">
+            <div class="topbody">
+                <ul class="topleft">
+                    <li>
+                        <div>
+                            <span>全球</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <a href="#">
+                                <span>亲，请登录</span>
+                            </a>
+                            <a href="#">
+                                <span>免费注册</span>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <a href="#">
+                                <span>手机逛淘宝</span>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <a href="#">
+                                <span>网页无障碍</span>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="topright">
+                    <li>
+                        <div class="dropdown">
+                            <a href="#" class="dropbtn">
+                                <span>我的淘宝</span>
+                            </a>
+                            <div class="dropdown-content">
+                                <a href="#">已买到的宝贝</a>
+                                <a href="#">我的足迹</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <a href="#">
+                                <span>购物车</span>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <a href="#">
+                                <span>收藏夹</span>
+                            </a>
+                            <div class="dropdown-content">
+                                <a href="#">收藏的宝贝</a>
+                                <a href="#">收藏的店铺</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <a href="#">
+                                <span>商品分类</span>
+                            </a>
+                            <a href="#">
+                                <span>免费开店</span>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <a href="#">
+                                <span>|</span>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <a href="#">
+                                <span>千牛卖家中心</span>
+                            </a>
+                            <div class="dropdown-content">
+                                <a href="#">开店入驻</a>
+                                <a href="#">已卖出的宝贝</a>
+                                <a href="#">出售中的宝贝</a>
+                                <a href="#">卖家服务市场</a>
+                                <a href="#">卖家培训中心</a>
+                                <a href="#">体检中心</a>
+                                <a href="#">电商学习中心</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <a href="#">
+                                <span>联系客服</span>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="search">
+            <img src="./image/taobaologo.png" alt="">
+            <div style="margin: 21px 0 0 0;">
+                <div>
+                    <form action="" class="form">
+                        <div class="woods">宝贝</div>
+                        <div><input type="text" class="textinput"></div>
+                        <div style="margin: auto 0;"><input type="submit" value="搜索" class="smbtn"></div>
+                    </form>
+                </div>
+                <div class="usual">
+                    <a href="#">新款连衣裙</a>
+                    <a href="#">四件套</a>
+                    <a href="#">潮流T恤</a>
+                    <a href="#">时尚女鞋</a>
+                    <a href="#">短裤</a>
+                    <a href="#">半身裙</a>
+                    <a href="#">男士外套</a>
+                    <a href="#">墙纸</a>
+                    <a href="#">行车记录仪</a>
+                </div>
+            </div>
+            <div class="QR">
+                <div>下载淘宝</div>
+                <img src="./image/QR.png" alt="">
+            </div>
+        </div>
+        <!-- 中部展示页 -->
+        <div class="medium">
+            <!-- 上面部分 -->
+            <div class="half-top">
+                <!-- 左侧分类栏 -->
+                <div class="left">
+                    <div class="classification">
+                        <h2>分类</h2>
+                        <ul>
+                            <li>
+                                <span><img src="./image/skirt.png" alt=""></span>
+                                <a href="">女装</a>
+                                <span>/</span>
+                                <a href="">内衣</a>
+                                <span>/</span>
+                                <a href="">奢品</a>
+                            </li>
+                            <li>
+                                <span><img src="./image/shoes.png" alt=""></span>
+                                <a href="">女鞋</a>
+                                <span>/</span>
+                                <a href="">男鞋</a>
+                                <span>/</span>
+                                <a href="">箱包</a>
+                            </li>
+                            <li>
+                                <span><img src="./image/perfume.png" alt=""></span>
+                                <a href="">美妆</a>
+                                <span>/</span>
+                                <a href="">饰品</a>
+                                <span>/</span>
+                                <a href="">洗护</a>
+                            </li>
+                            <li>
+                                <span><img src="./image/T-shirt.png" alt=""></span>
+                                <a href="">男装</a>
+                                <span>/</span>
+                                <a href="">运动</a>
+                                <span>/</span>
+                                <a href="">百货</a>
+                            </li>
+                            <li>
+                                <span><img src="./image/phone.png" alt=""></span>
+                                <a href="">手机</a>
+                                <span>/</span>
+                                <a href="">数码</a>
+                                <span>/</span>
+                                <a href="">企业礼品</a>
+                            </li>
+                            <li>
+                                <span><img src="./image/furniture.png" alt=""></span>
+                                <a href="">家装</a>
+                                <span>/</span>
+                                <a href="">电器</a>
+                                <span>/</span>
+                                <a href="">车品</a>
+                            </li>
+                            <li>
+                                <span><img src="./image/food.png" alt=""></span>
+                                <a href="">食品</a>
+                                <span>/</span>
+                                <a href="">生鲜</a>
+                                <span>/</span>
+                                <a href="">母婴</a>
+                            </li>
+                            <li>
+                                <span><img src="./image/medicine.png" alt=""></span>
+                                <a href="">医药</a>
+                                <span>/</span>
+                                <a href="">保健</a>
+                                <span>/</span>
+                                <a href="">进口</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="upper">
+                        <ul>
+                            <li><a href="#" style="color:#fe0036; font-weight: 700;">天猫</a></li>
+                            <li><span>|</span></li>
+                            <li><a href="#" style="color:#fe0036; font-weight: 700;">聚划算</a></li>
+                            <li><span>|</span></li>
+                            <li><a href="#" style="color:#8bc900; font-weight: 700;">天猫超市</a></li>
+                            <li><span>|</span></li>
+                            <li><a href="#">司法拍卖</a></li>
+                            <li><span>|</span></li>
+                            <li><a href="#">飞猪旅行</a></li>
+                            <li><span>|</span></li>
+                            <li><a href="#">天天特卖</a></li>
+                            <li><span>|</span></li>
+                            <li><a href="#">极有家</a></li>
+                            <li><span>|</span></li>
+                            <li><a href="#">淘宝直播</a></li>
+                        </ul>
+                    </div>
+                    <div class="down">
+                        <div class="tb-promo">
+                            <img src="./image/taobao.jpg" alt="">
+                            <a href="#" class="prev"> &lt; </a>
+                            <a href="#" class="next"> &gt; </a>
+                            <ul class="pro-nav">
+                                <li></li>
+                                <li class="selected"></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                            </ul>
+                        </div>
+                        <div class="user">
+                            <div class="head">
+                                <a href="#"><img src="./image/head.jpg" alt=""></a>
+                                <a href="#" class="text">
+                                    <span>Hi! 你好</span>
+                                </a>
+                            </div>
+                            <div class="log">
+                                <a href="#" class="login">登录</a>
+                                <a href="#" class="register">注册</a>
+                                <a href="#" class="ops">开店</a>
+                            </div>
+                            <div class="user-mytao">
+                                <div class="mytao-content">
+                                    <img src="./image/star.png" alt="">
+                                    <a href="#">
+                                        <p>宝贝收藏</p>
+                                    </a>
+                                </div>
+                                <div class="mytao-content">
+                                    <img src="./image/bag.png" alt="">
+                                    <a href="#">
+                                        <p>买过的店</p>
+                                    </a>
+                                </div>
+                                <div class="mytao-content">
+                                    <img src="./image/shop.png" alt="">
+                                    <a href="#">
+                                        <p>收藏的店</p>
+                                    </a>
+                                </div>
+                                <div class="mytao-content">
+                                    <img src="./image/clock.png" alt="">
+                                    <a href="#">
+                                        <p>我的足迹</p>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="hot">
+                                <div class="hot-content">
+                                    <p>淘宝平台打击流量造假、黑公关、网络水军公告</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="half-bottom">
+                <div class="guess">
+                    <h3 class="guess-header">
+                        <span>猜你喜欢</span>
+                    </h3>
+                    <div class="guess-content">
+                        <a href="#" class="box">
+                            <div class="img-wrapper">
+                                <img
+                                    src="https://gw.alicdn.com/bao/uploaded/i1/2201235423618/O1CN01INCgwK1cb5igDXVth_!!0-item_pic.jpg_300x300q90.jpg_.webp">
+                            </div>
+                            <div class="wrapper-right">
+                                <div class="info-wrapper">
+                                    <div class="title">小麻花独立包装酥脆多口味零食传统糕点休闲小吃办公室零食</div>
+                                </div>
+                                <div class="price-wrapper">
+                                    <span class="price-value"><em>¥</em>3.87</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="#" class="box">
+                            <div class="img-wrapper">
+                                <img
+                                    src="https://gw.alicdn.com/bao/uploaded/i4/2131609179/O1CN01YQKRWE2Hg2HfLEfrS_!!0-item_pic.jpg_300x300q90.jpg_.webp">
+                            </div>
+                            <div class="wrapper-right">
+                                <div class="info-wrapper">
+                                    <div class="title">对联2023新款兔年春联过新年春节家用福字门贴装饰对联大礼包磁吸</div>
+                                </div>
+                                <div class="price-wrapper">
+                                    <span class="price-value"><em>¥</em>8.8</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="#" class="box">
+                            <div class="img-wrapper">
+                                <img
+                                    src="https://gw.alicdn.com/bao/uploaded/i4/32261624/O1CN01WbNYnx1Nrpz6WrB10_!!0-saturn_solar.jpg_300x300q90.jpg_.webp">
+                            </div>
+                            <div class="wrapper-right">
+                                <div class="info-wrapper">
+                                    <div class="title">新中式全铜玉石吊灯客厅灯新款简约现代中式别墅餐厅书房卧室灯</div>
+                                </div>
+                                <div class="price-wrapper">
+                                    <span class="price-value"><em>¥</em>388</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="#" class="box">
+                            <div class="img-wrapper">
+                                <img
+                                    src="https://gw.alicdn.com/bao/uploaded/i3/2081314055/O1CN01S5oQTA1fpEqqeL5bg_!!0-item_pic.jpg_300x300q90.jpg_.webp">
+                            </div>
+                            <div class="wrapper-right">
+                                <div class="info-wrapper">
+                                    <div class="title">比比赞黑松露形巧克力年货节网红小零食糖果休闲食品（代可可脂）</div>
+                                </div>
+                                <div class="price-wrapper">
+                                    <span class="price-value"><em>¥</em>8.7</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="#" class="box">
+                            <div class="img-wrapper">
+                                <img
+                                    src="https://gw.alicdn.com/bao/uploaded/i3/60069162/O1CN012lJbMa2HYFWxHtYRg_!!0-saturn_solar.jpg_300x300q90.jpg_.webp">
+                            </div>
+                            <div class="wrapper-right">
+                                <div class="info-wrapper">
+                                    <div class="title">工厂出货中福馆夏日星辰 - 翡翠白冰蛋面耳钉耳饰</div>
+                                </div>
+                                <div class="price-wrapper">
+                                    <span class="price-value"><em>¥</em>17599</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="#" class="box">
+                            <div class="img-wrapper">
+                                <img
+                                    src="https://gw.alicdn.com/bao/uploaded/i4/2924122773/O1CN01knLFz61WM52tQUoK5_!!2924122773.jpg_300x300q90.jpg_.webp">
+                            </div>
+                            <div class="wrapper-right">
+                                <div class="info-wrapper">
+                                    <div class="title">2023新年卡通小兔子钥匙扣可爱包包挂件网红情侣汽车钥匙链挂饰</div>
+                                </div>
+                                <div class="price-wrapper">
+                                    <span class="price-value"><em>¥</em>5</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="helper">
+                <div class="helper-box">
+                    <img src="./image/rules.png" alt="">
+                    <ul class="helper-content">
+                        <li>淘宝规则</li>
+                        <li>退货退款流程</li>
+                        <li>服务中心</li>
+                        <li>更多特色服务</li>
+                        <li>平台服务协议</li>
+                        <li>规则意见征集</li>
+                    </ul>
+                </div>
+                <div class="helper-box">
+                    <img src="./image/new one.png" alt="">
+                    <ul class="helper-content">
+                        <li>新手专区</li>
+                        <li>24小时在线帮助</li>
+                        <li>免费开店</li>
+                    </ul>
+                </div>
+                <div class="helper-box">
+                    <img src="./image/pay way.png" alt="">
+                    <ul class="helper-content">
+                        <li>快捷支付</li>
+                        <li>信用卡</li>
+                        <li>余额宝</li>
+                        <li>蚂蚁花呗</li>
+                    </ul>
+                </div>
+                <div class="helper-box">
+                    <img src="./image/special.png" alt="">
+                    <ul class="helper-content">
+                        <li>手机淘宝</li>
+                        <li>旺旺/旺信</li>
+                        <li>大众评审</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="sidebar">
+            <div class="info">
+                <img src="message.png" alt="">
+                <div>消息</div>
+            </div>
+            <div class="customer">
+                <img src="customer.png" alt="">
+                <div>官方客服</div>
+            </div>
+            <div class="feed back">
+                <img src="feedback.png" alt="">
+                <div>反馈</div>
+            </div>
+            <div class="report">
+                <img src="report.png" alt="">
+                <div>举报</div>
+            </div>
+        </div>
+        <div class="bottom"></div>
+    </body>
+
+</html>
